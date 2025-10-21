@@ -1,0 +1,32 @@
+# src/main/resources/application.yml
+
+spring:
+  server:
+    address : 0.0.0.0
+    port : 8080
+
+  datasource:
+    url: jdbc:postgresql://aws-1-us-west-1.pooler.supabase.com:6543/postgres
+    username: postgres.kjbctuxvemsfgjatxytj
+    password: fernanfloo38
+    driver-class-name: org.postgresql.Driver
+
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+      idle-timeout: 30000
+      max-lifetime: 600000
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+
+api :
+  gemini :
+    key : AIzaSyDRdxTTfB6-_zAAIYDxSI0zcYkZiF8mdVk
+
