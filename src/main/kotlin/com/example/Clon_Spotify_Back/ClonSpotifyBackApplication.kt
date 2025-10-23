@@ -1,8 +1,7 @@
 package com.example.Clon_Spotify_Back
 
 
-import com.google.genai.Client
-import com.google.genai.types.GenerateContentResponse
+import com.example.Clon_Spotify_Back.jwt.JwtService
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -22,9 +21,13 @@ class ClonSpotifyBackApplication  {
 @Component
 class Config(
 	@Value("\${var.secret}")
-	private val varSecret: String
+	private val varSecret: String,
+	private val jwtService: JwtService
 ): CommandLineRunner {
 	override fun run(vararg args: String?) {
+
 		println(varSecret)
+		println(jwtService.generarToken("USUARIO"))
+
 	}
 }

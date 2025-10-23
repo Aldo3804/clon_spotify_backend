@@ -6,8 +6,8 @@ spring:
     port : 8080
 
   datasource:
-    url: jdbc:postgresql://aws-1-us-west-1.pooler.supabase.com:6543/postgres
-    username: postgres.kjbctuxvemsfgjatxytj
+    url: ${URL_DATABASE}
+    username: ${USERNAME_DATABASE}
     password: ${PASSWORD_DATABASE}
     driver-class-name: org.postgresql.Driver
 
@@ -33,3 +33,6 @@ api :
 var :
   secret : ${VARIABLE}
 
+jwt :
+  variable : ${JWT_VARIABLE}
+  expiration : ${JWT_EXPIRATION}
