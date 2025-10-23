@@ -8,7 +8,7 @@ spring:
   datasource:
     url: jdbc:postgresql://aws-1-us-west-1.pooler.supabase.com:6543/postgres
     username: postgres.kjbctuxvemsfgjatxytj
-    password: fernanfloo38
+    password: ${PASSWORD_DATABASE}
     driver-class-name: org.postgresql.Driver
 
     hikari:
@@ -28,5 +28,8 @@ spring:
 
 api :
   gemini :
-    key : AIzaSyDRdxTTfB6-_zAAIYDxSI0zcYkZiF8mdVk
+    key : ${GOOGLE_API_KEY}
+
+var :
+  secret : ${VARIABLE}
 

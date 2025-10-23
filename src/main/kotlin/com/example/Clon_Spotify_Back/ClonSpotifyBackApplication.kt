@@ -3,15 +3,28 @@ package com.example.Clon_Spotify_Back
 
 import com.google.genai.Client
 import com.google.genai.types.GenerateContentResponse
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.stereotype.Component
 
 @SpringBootApplication
-class ClonSpotifyBackApplication {
+class ClonSpotifyBackApplication  {
 	companion object {
 		@JvmStatic
 		fun main(args: Array<String>) {
 			runApplication<ClonSpotifyBackApplication>(*args)
 		}
+	}
+}
+
+@Component
+class Config(
+	@Value("\${var.secret}")
+	private val varSecret: String
+): CommandLineRunner {
+	override fun run(vararg args: String?) {
+		println(varSecret)
 	}
 }
