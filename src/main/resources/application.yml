@@ -35,4 +35,6 @@ var :
 
 jwt :
   variable : ${JWT_VARIABLE}
-  expiration : ${JWT_EXPIRATION}
+  expiration :
+    access : ${JWT_EXPIRATION_ACCESS}
+    refresh : ${JWT_EXPIRATION_REFRESH}

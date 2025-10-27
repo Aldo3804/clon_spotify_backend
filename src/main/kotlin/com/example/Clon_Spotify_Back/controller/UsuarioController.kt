@@ -2,18 +2,15 @@ package com.example.Clon_Spotify_Back.controller
 
 import com.example.Clon_Spotify_Back.dto.LoginDTO
 import com.example.Clon_Spotify_Back.dto.UsuarioDTO
-import com.example.Clon_Spotify_Back.entity.Usuario
 import com.example.Clon_Spotify_Back.service.UsuarioService
+import com.example.Clon_Spotify_Back.wrappers.request.RefreshRequest
+import com.example.Clon_Spotify_Back.wrappers.response.LoginResponse
+import com.example.Clon_Spotify_Back.wrappers.response.RefreshResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.security.access.prepost.PreAuthorize
+import org.springframework.web.bind.annotation.*
 
 
 @RestController
@@ -26,19 +23,23 @@ class UsuarioController {
 
     @PostMapping("/registrar")
     fun registrar(@RequestBody usuarioDTO: UsuarioDTO): ResponseEntity<UsuarioDTO> {
-        usuarioService.registrarUsuario(usuarioDTO)
-        val usuarioLogueado = usuarioService.iniciarSesion(usuarioDTO.usuario, usuarioDTO.contrasenia)
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioLogueado)
+        val user = usuarioService.registrarUsuario(usuarioDTO)
+        return ResponseEntity.status(HttpStatus.CREATED).body(user)
     }
 
 
-    @PutMapping("/sesion")
-    fun iniciarSesion(@RequestBody loginDTO: LoginDTO): ResponseEntity<UsuarioDTO>{
-        val usuarioDTO: UsuarioDTO = usuarioService.iniciarSesion(loginDTO.usuario,loginDTO.contrasenia)
-        return ResponseEntity.ok(usuarioDTO)
+    @PutMapping("/login")
+    fun iniciarSesion(@RequestBody loginDTO: LoginDTO): ResponseEntity<LoginResponse>{
+        val token: LoginResponse = usuarioService.iniciarSesion(loginDTO)
+        return ResponseEntity.ok(token)
     }
 
+    @PreAuthorize("hasAnyRole('USUARIO', 'ADMINISTRADOR')")
+    @PostMapping("/refresh")
+    fun refrescarToken(@RequestBody refreshRequest: RefreshRequest): ResponseEntity<RefreshResponse> {
+        val response = usuarioService.refreshToken(refreshRequest)
+        return ResponseEntity.ok(response)
+    }
 
 
 

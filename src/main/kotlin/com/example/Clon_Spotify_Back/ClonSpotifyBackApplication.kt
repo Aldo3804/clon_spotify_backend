@@ -27,7 +27,7 @@ class Config(
 	override fun run(vararg args: String?) {
 
 		println(varSecret)
-		println(jwtService.generarToken("USUARIO"))
+		println(jwtService.generarRefreshToken("wqw"))
 
 	}
 }

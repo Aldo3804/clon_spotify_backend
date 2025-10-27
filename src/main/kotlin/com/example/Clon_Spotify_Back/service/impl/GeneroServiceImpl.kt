@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service
 
 
 @Service
-class GeneroServiceImpl : GeneroService {
-
-    @Autowired
-    private lateinit var generoJPA: GeneroJPA
-
+class GeneroServiceImpl(
+    private val generoJPA: GeneroJPA
+) : GeneroService {
 
     @Tool(description = "Ordename segun la importancia de estos generos")
     override fun listar(): List<Genero> {

@@ -1,27 +1,21 @@
 package com.example.Clon_Spotify_Back.service.impl
 
 import com.example.Clon_Spotify_Back.dto.CancionDTO
-import com.example.Clon_Spotify_Back.entity.Cancion
 import com.example.Clon_Spotify_Back.repository.CancionJPA
 import com.example.Clon_Spotify_Back.repository.ListaJPA
 import com.example.Clon_Spotify_Back.service.CancionService
-import com.example.Clon_Spotify_Back.wrapper.MapearCancion
-import org.springframework.beans.factory.annotation.Autowired
+import com.example.Clon_Spotify_Back.mappers.MapearCancion
 import org.springframework.stereotype.Service
-import kotlin.streams.toList
 
 
 @Service
-class CancionServiceImpl: CancionService {
+class CancionServiceImpl(
 
-    @Autowired
-    private lateinit var cancionJPA: CancionJPA
+    private val cancionJPA: CancionJPA,
+    private val listaJPA: ListaJPA,
+    private val mapearCancion: MapearCancion
 
-    @Autowired
-    private lateinit var listaJPA: ListaJPA
-
-    @Autowired
-    private lateinit var mapearCancion: MapearCancion
+): CancionService {
 
 
     override fun listar(): List<CancionDTO> {

@@ -1,11 +1,10 @@
-package com.example.Clon_Spotify_Back.wrapper
+package com.example.Clon_Spotify_Back.mappers
 
 import com.example.Clon_Spotify_Back.dto.CancionDTO
 import com.example.Clon_Spotify_Back.entity.Autor
 import com.example.Clon_Spotify_Back.entity.Cancion
 import com.example.Clon_Spotify_Back.entity.Genero
 import com.example.Clon_Spotify_Back.projection.CancionVistaProjection
-import com.example.Clon_Spotify_Back.repository.AutorJPA
 import com.example.Clon_Spotify_Back.repository.GeneroJPA
 import com.example.Clon_Spotify_Back.repository.ListaJPA
 import org.springframework.beans.factory.annotation.Autowired

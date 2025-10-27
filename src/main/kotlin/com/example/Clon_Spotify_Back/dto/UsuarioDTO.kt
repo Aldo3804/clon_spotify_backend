@@ -4,7 +4,6 @@ package com.example.Clon_Spotify_Back.dto
 
 data class UsuarioDTO(
 
-    val idUsuario:Long,
 
     val nombre:String,
 

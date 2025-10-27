@@ -12,4 +12,5 @@ interface UsuarioJPA: JpaRepository<Usuario, Long> {
     @Query("SELECT u FROM Usuario u WHERE u.usuario=:usuario and u.contrasenia=:contrasenia")
     fun findByUserAndPass(@Param("usuario") usuario: String,@Param("contrasenia") contrasenia: String): Usuario
 
+    fun findByUsuario(usuario: String): Usuario?
 }

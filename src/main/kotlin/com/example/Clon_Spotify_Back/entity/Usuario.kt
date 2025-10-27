@@ -3,7 +3,10 @@ package com.example.Clon_Spotify_Back.entity
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario",
+    uniqueConstraints = [UniqueConstraint
+        (columnNames = ["correo", "usuario"])]
+    )
 data class Usuario(
 
     @Id
@@ -20,7 +23,7 @@ data class Usuario(
 
     val usuario: String,
 
-    val contrasenia:String,
+    var contrasenia:String,
 
     @OneToOne
     @JoinColumn(name = "id_rol")
