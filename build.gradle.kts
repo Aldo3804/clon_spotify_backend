@@ -35,6 +35,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.ai:spring-ai-starter-mcp-server-webmvc")
 	implementation("com.google.genai:google-genai:1.18.0")
+	implementation("org.springframework.boot:spring-boot-starter-mail")
+	implementation("io.mailtrap:mailtrap-java:1.0.0")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	runtimeOnly("org.postgresql:postgresql")

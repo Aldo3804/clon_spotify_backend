@@ -6,13 +6,13 @@ spring:
     port : 8080
 
   datasource:
-    url: ${URL_DATABASE}
+    url: jdbc:postgresql://aws-1-us-west-1.pooler.supabase.com:5432/postgres
     username: ${USERNAME_DATABASE}
     password: ${PASSWORD_DATABASE}
     driver-class-name: org.postgresql.Driver
 
     hikari:
-      maximum-pool-size: 5
+      maximum-pool-size: 2
       minimum-idle: 1
       idle-timeout: 30000
       max-lifetime: 600000
@@ -26,15 +26,26 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
 
+  mail :
+    host : smtp.gmail.com
+    port : 587
+    username : ${EMAIL_EMISOR}
+    password : ${EMAIL_PASSWORD}
+    properties :
+      mail :
+        smtp :
+          auth :
+            true
+          starttls :
+            enable : true
+
 api :
   gemini :
     key : ${GOOGLE_API_KEY}
-
-var :
-  secret : ${VARIABLE}
 
 jwt :
   variable : ${JWT_VARIABLE}
   expiration :
     access : ${JWT_EXPIRATION_ACCESS}
     refresh : ${JWT_EXPIRATION_REFRESH}
+

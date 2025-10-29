@@ -20,13 +20,11 @@ class ClonSpotifyBackApplication  {
 
 @Component
 class Config(
-	@Value("\${var.secret}")
-	private val varSecret: String,
+
 	private val jwtService: JwtService
 ): CommandLineRunner {
 	override fun run(vararg args: String?) {
 
-		println(varSecret)
 		println(jwtService.generarRefreshToken("wqw"))
 
 	}

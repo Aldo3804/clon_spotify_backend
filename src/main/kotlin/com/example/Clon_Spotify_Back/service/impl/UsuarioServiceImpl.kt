@@ -7,6 +7,7 @@ import com.example.Clon_Spotify_Back.jwt.JwtService
 import com.example.Clon_Spotify_Back.repository.UsuarioJPA
 import com.example.Clon_Spotify_Back.service.UsuarioService
 import com.example.Clon_Spotify_Back.mappers.MapearUsuario
+import com.example.Clon_Spotify_Back.utils.EmailService
 import com.example.Clon_Spotify_Back.wrappers.request.RefreshRequest
 import com.example.Clon_Spotify_Back.wrappers.response.LoginResponse
 import com.example.Clon_Spotify_Back.wrappers.response.RefreshResponse
@@ -22,6 +23,7 @@ class UsuarioServiceImpl(
     private val usuarioJPA: UsuarioJPA,
     private val mapearUsuario: MapearUsuario,
     private val jwtService: JwtService,
+    private val emailService: EmailService,
     private val authenticationManager: AuthenticationManager,
     private val userDetailsService: UserDetailsService
 ): UsuarioService {
@@ -29,7 +31,13 @@ class UsuarioServiceImpl(
 
     override fun registrarUsuario(usuarioDTO: UsuarioDTO): UsuarioDTO {
         val usuario: Usuario = mapearUsuario.toEntity(usuarioDTO)
+        emailService.enviar(usuario.correo,"Gracias por registrarte","""
+            Gracias por registrarte en mi aplicacion, espero la 
+            pruebes y me comentes tu experiencia enviandome un email a este 
+            mismo correo. Saludos!!!
+        """.trimIndent())
         val nuevoUsuario = mapearUsuario.toDTO(usuarioJPA.save(usuario))
+
         return nuevoUsuario
     }
 
