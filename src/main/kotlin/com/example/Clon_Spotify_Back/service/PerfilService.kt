@@ -10,4 +10,5 @@ interface PerfilService {
 
     fun obtenerUsuario(usuario:String) : UsuarioResponse
 
+    fun obtenerId(usuario: String) : Long
 }

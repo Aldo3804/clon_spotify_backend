@@ -46,7 +46,4 @@ class PerfilController(
         return ResponseEntity.ok(perfil)
 
     }
-
-
-
 }

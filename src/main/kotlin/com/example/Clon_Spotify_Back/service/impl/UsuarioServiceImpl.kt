@@ -31,11 +31,13 @@ class UsuarioServiceImpl(
 
     override fun registrarUsuario(usuarioDTO: UsuarioDTO): UsuarioDTO {
         val usuario: Usuario = mapearUsuario.toEntity(usuarioDTO)
+
         emailService.enviar(usuario.correo,"Gracias por registrarte","""
             Gracias por registrarte en mi aplicacion, espero la 
             pruebes y me comentes tu experiencia enviandome un email a este 
             mismo correo. Saludos!!!
         """.trimIndent())
+
         val nuevoUsuario = mapearUsuario.toDTO(usuarioJPA.save(usuario))
 
         return nuevoUsuario

@@ -5,11 +5,7 @@ LABEL authors="Lenovo LOQ"
 WORKDIR /app
 
 # Copiamos los archivos necesarios
-COPY gradlew .
-COPY gradle gradle
-COPY build.gradle.kts .
-COPY settings.gradle.kts .
-COPY src src
+COPY . .
 
 # Damos permisos al wrapper (necesario en Linux)
 RUN chmod +x gradlew

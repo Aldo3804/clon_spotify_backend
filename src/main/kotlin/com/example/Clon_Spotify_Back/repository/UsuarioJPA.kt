@@ -9,8 +9,7 @@ import java.util.Optional
 
 interface UsuarioJPA: JpaRepository<Usuario, Long> {
 
-    @Query("SELECT u FROM Usuario u WHERE u.usuario=:usuario and u.contrasenia=:contrasenia")
-    fun findByUserAndPass(@Param("usuario") usuario: String,@Param("contrasenia") contrasenia: String): Usuario
-
+    @Query("SELECT u.idUsuario FROM Usuario u WHERE u.usuario = :usuario")
+    fun findIdByUsuario(@Param("usuario") usuario: String) : Long
     fun findByUsuario(usuario: String): Usuario?
 }

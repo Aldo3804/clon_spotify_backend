@@ -17,12 +17,12 @@ data class Favorito(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idFavorito:Long,
+    val idFavorito: Long,
 
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_usuario")
-    val idUsuario: Usuario,
+    val idUsuario: Usuario?,
 
     @ManyToOne
     @JoinColumn(name = "id_cancion")

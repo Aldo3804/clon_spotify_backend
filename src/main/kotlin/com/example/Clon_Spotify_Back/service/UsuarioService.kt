@@ -14,4 +14,5 @@ interface UsuarioService {
     fun iniciarSesion(loginDTO: LoginDTO) : LoginResponse
 
     fun refreshToken(refreshRequest: RefreshRequest) : RefreshResponse
+
 }

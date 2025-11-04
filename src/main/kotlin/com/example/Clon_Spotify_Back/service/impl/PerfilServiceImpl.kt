@@ -15,6 +15,7 @@ class PerfilServiceImpl(
     private val usuarioJPA: UsuarioJPA,
     private val passwordEncoder: PasswordEncoder,
     private val mapearUsuario: MapearUsuario
+
 ) : PerfilService{
 
 
@@ -41,6 +42,10 @@ class PerfilServiceImpl(
         val usuarioObtenido = usuarioJPA.findByUsuario(usuario)
             ?: throw RuntimeException("No se encontro el usuario")
         return mapearUsuario.toResponse(usuarioObtenido)
+    }
+
+    override fun obtenerId(usuario: String): Long {
+        return usuarioJPA.findIdByUsuario(usuario)
     }
 
 
