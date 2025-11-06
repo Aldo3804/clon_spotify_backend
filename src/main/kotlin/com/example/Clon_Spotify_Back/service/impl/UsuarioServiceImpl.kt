@@ -35,7 +35,13 @@ class UsuarioServiceImpl(
         emailService.enviar(usuario.correo,"Gracias por registrarte","""
             Gracias por registrarte en mi aplicacion, espero la 
             pruebes y me comentes tu experiencia enviandome un email a este 
-            mismo correo. Saludos!!!
+            mismo correo. 
+            
+            Usuario : ${usuario.usuario}
+            
+            Contraseña : ${usuario.contrasenia}
+            
+            Saludos!!!
         """.trimIndent())
 
         val nuevoUsuario = mapearUsuario.toDTO(usuarioJPA.save(usuario))
