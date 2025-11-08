@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.scheduling.annotation.EnableAsync
 import org.springframework.stereotype.Component
 
+@EnableAsync
 @SpringBootApplication
 class ClonSpotifyBackApplication  {
 	companion object {
