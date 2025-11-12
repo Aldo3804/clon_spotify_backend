@@ -34,7 +34,6 @@ class UsuarioController {
         return ResponseEntity.ok(token)
     }
 
-    @PreAuthorize("hasAnyRole('USUARIO', 'ADMINISTRADOR')")
     @PostMapping("/refresh")
     fun refrescarToken(@RequestBody refreshRequest: RefreshRequest): ResponseEntity<RefreshResponse> {
         val response = usuarioService.refreshToken(refreshRequest)
